@@ -1,28 +1,16 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import socket from "./server";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./main";
+import MainLogin from "./Login/MainLogin";
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    askUserName();
-  }, []);
-
-  const askUserName = () => {
-    const userName = prompt("당신의 이름은?");
-    console.log(userName);
-
-    socket.emit("login", userName, (res) => {
-      if (res?.ok) {
-        setUser(res.data);
-      }
-    });
-  };
   return (
-    <div>
-      <div className="App"></div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLogin />}></Route>
+        <Route path="/chat" element={<MainPage />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
