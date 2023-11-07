@@ -2,18 +2,23 @@ import socket from "../server";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { UserState } from "../state/UserState";
 
 export default function MainLogin() {
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const setUserState = useSetRecoilState(UserState);
 
   const Login = () => {
     socket.emit("login", { id, pwd }, (res) => {
       if (res?.ok && res.data) {
-        console.log(res);
+        console.log(res.data);
         setUser(res.data);
+        setUserState(res.data.name);
+        navigate("/chat");
       } else {
         alert("회원정보 실패");
       }
