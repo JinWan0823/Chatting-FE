@@ -7,7 +7,10 @@ const MessageContainer = ({ messageList, user }) => {
     <div>
       {messageList.map((message, index) => {
         return (
-          <Container key={message._id} className="message-container">
+          <Container
+            key={`${message._id}${index}`}
+            className="message-container"
+          >
             {message.user.name === "system" ? (
               <div className="system-message-container">
                 <p className="system-message">{message.chat}</p>
@@ -20,6 +23,7 @@ const MessageContainer = ({ messageList, user }) => {
               <div className="your-message-container">
                 <img
                   src="/profile.jpeg"
+                  alt="img"
                   className="profile-image"
                   style={
                     (index === 0

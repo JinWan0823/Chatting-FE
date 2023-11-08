@@ -17,7 +17,7 @@ export default function MainLogin() {
       if (res?.ok && res.data) {
         console.log(res.data);
         setUser(res.data);
-        setUserState(res.data.name);
+        setUserState(res.data);
         navigate("/chat");
       } else {
         alert("회원정보 실패");
@@ -27,7 +27,7 @@ export default function MainLogin() {
 
   return (
     <div>
-      <div className="App">
+      <div className="App flex_wrap">
         <div className="logo_box"></div>
         <div className="form_wrap wrap">
           <input

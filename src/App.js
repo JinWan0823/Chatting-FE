@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "./main";
+import ChatPage from "./chat";
 import MainLogin from "./Login/MainLogin";
 import { RecoilRoot } from "recoil";
 
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainLogin />}></Route>
-          <Route path="/chat" element={<MainPage />}></Route>
+          <Route path="/chat" element={<ChatPage />}></Route>
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
